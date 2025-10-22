@@ -210,6 +210,7 @@ public class HitungDiskonFrame extends javax.swing.JFrame {
         jSliderDiskon.setForeground(new java.awt.Color(255, 255, 255));
         jSliderDiskon.setMajorTickSpacing(5);
         jSliderDiskon.setMaximum(25);
+        jSliderDiskon.setPaintLabels(true);
         jSliderDiskon.setPaintTicks(true);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -413,20 +414,21 @@ public class HitungDiskonFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         int konfirmasi = JOptionPane.showConfirmDialog(this, "Hapus semua data dan riwayat?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
         if (konfirmasi == JOptionPane.YES_OPTION) {
-            // reset semua field...
+            jTextFieldHarga.setText("Masukkan harga asli");
+            jTextFieldHarga.setForeground(Color.GRAY);
+            jTextFieldKupon.setText("Masukkan kode kupon (opsional)");
+            jTextFieldKupon.setForeground(Color.GRAY);
+            jTextFieldHasil.setText("Harga akhir akan muncul di sini");
+            jTextFieldHasil.setForeground(Color.GRAY);
+            jTextAreaRiwayat.setText("");
+            jComboBoxDiskon.setSelectedIndex(0);
+            jSliderDiskon.setValue(0);
+            jTextFieldPenghematan.setText("Penghematan akan muncul di sini");
+            jTextFieldPenghematan.setForeground(Color.GRAY);
+            
         }
 
-        jTextFieldHarga.setText("Masukkan harga asli");
-        jTextFieldHarga.setForeground(Color.GRAY);
-        jTextFieldKupon.setText("Masukkan kode kupon (opsional)");
-        jTextFieldKupon.setForeground(Color.GRAY);
-        jTextFieldHasil.setText("Harga akhir akan muncul di sini");
-        jTextFieldHasil.setForeground(Color.GRAY);
-        jTextAreaRiwayat.setText("");
-        jComboBoxDiskon.setSelectedIndex(0);
-        jSliderDiskon.setValue(0);
-        jTextFieldPenghematan.setText("Penghematan akan muncul di sini");
-        jTextFieldPenghematan.setForeground(Color.GRAY);
+        
 
     }//GEN-LAST:event_jButtonHapusActionPerformed
 
