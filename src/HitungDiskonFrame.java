@@ -18,80 +18,80 @@ public class HitungDiskonFrame extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         // Placeholder untuk harga asli
-        jTextFieldHarga.setText("Masukkan harga asli");
-        jTextFieldHarga.setForeground(Color.GRAY);
-        jTextFieldHarga.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtHarga.setText("Masukkan harga asli");
+        txtHarga.setForeground(Color.GRAY);
+        txtHarga.addFocusListener(new java.awt.event.FocusAdapter() {
             @Override
             public void focusGained(java.awt.event.FocusEvent evt) {
-                if (jTextFieldHarga.getForeground().equals(Color.GRAY)) {
-                    jTextFieldHarga.setText("");
-                    jTextFieldHarga.setForeground(Color.BLACK);
+                if (txtHarga.getForeground().equals(Color.GRAY)) {
+                    txtHarga.setText("");
+                    txtHarga.setForeground(Color.BLACK);
                 }
             }
 
             @Override
             public void focusLost(java.awt.event.FocusEvent evt) {
-                if (jTextFieldHarga.getText().isEmpty()) {
-                    jTextFieldHarga.setText("Masukkan harga asli");
-                    jTextFieldHarga.setForeground(Color.GRAY);
+                if (txtHarga.getText().isEmpty()) {
+                    txtHarga.setText("Masukkan harga asli");
+                    txtHarga.setForeground(Color.GRAY);
                 }
             }
         });
 
         // Placeholder untuk kupon
-        jTextFieldKupon.setText("Masukkan kode kupon (opsional)");
-        jTextFieldKupon.setForeground(Color.GRAY);
-        jTextFieldKupon.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtKupon.setText("Masukkan kode kupon (opsional)");
+        txtKupon.setForeground(Color.GRAY);
+        txtKupon.addFocusListener(new java.awt.event.FocusAdapter() {
             @Override
             public void focusGained(java.awt.event.FocusEvent evt) {
-                if (jTextFieldKupon.getForeground().equals(Color.GRAY)) {
-                    jTextFieldKupon.setText("");
-                    jTextFieldKupon.setForeground(Color.BLACK);
+                if (txtKupon.getForeground().equals(Color.GRAY)) {
+                    txtKupon.setText("");
+                    txtKupon.setForeground(Color.BLACK);
                 }
             }
 
             @Override
             public void focusLost(java.awt.event.FocusEvent evt) {
-                if (jTextFieldKupon.getText().isEmpty()) {
-                    jTextFieldKupon.setText("Masukkan kode kupon (opsional)");
-                    jTextFieldKupon.setForeground(Color.GRAY);
+                if (txtKupon.getText().isEmpty()) {
+                    txtKupon.setText("Masukkan kode kupon (opsional)");
+                    txtKupon.setForeground(Color.GRAY);
                 }
             }
         });
 
         // Text hasil tidak bisa diketik
-        jTextFieldHasil.setEditable(false);
-        jTextFieldHasil.setForeground(Color.GRAY);
+        txtHasil.setEditable(false);
+        txtHasil.setForeground(Color.GRAY);
         jTextAreaRiwayat.setEditable(false);
         
         // Placeholder untuk penghematan
-        jTextFieldPenghematan.setText("Penghematan akan muncul di sini");
-        jTextFieldPenghematan.setForeground(Color.GRAY);
-        jTextFieldPenghematan.setEditable(false);
+        txtPenghematan.setText("Penghematan akan muncul di sini");
+        txtPenghematan.setForeground(Color.GRAY);
+        txtPenghematan.setEditable(false);
         
         // Placeholder untuk hasil harga akhir
-        jTextFieldHasil.setText("Harga akhir akan muncul di sini");
-        jTextFieldHasil.setForeground(Color.GRAY);
+        txtHasil.setText("Harga akhir akan muncul di sini");
+        txtHasil.setForeground(Color.GRAY);
 
         // Atur fokus awal bukan ke textfield
         java.awt.EventQueue.invokeLater(() -> {
-            jPanel1.requestFocusInWindow();
+            panelHitungDiskon.requestFocusInWindow();
         });
         // --- Sinkronisasi antara ComboBox dan Slider Diskon ---
-        jSliderDiskon.addChangeListener(e -> {
-            int value = jSliderDiskon.getValue();
+        sldrDiskon.addChangeListener(e -> {
+            int value = sldrDiskon.getValue();
             if (value % 5 == 0) { // hanya tangkap nilai kelipatan 5
-                jComboBoxDiskon.setSelectedItem(value == 0 ? "-" : value + "%");
+                cmbDiskon.setSelectedItem(value == 0 ? "-" : value + "%");
             }
         });
 
-        jComboBoxDiskon.addActionListener(e -> {
-            String selected = (String) jComboBoxDiskon.getSelectedItem();
+        cmbDiskon.addActionListener(e -> {
+            String selected = (String) cmbDiskon.getSelectedItem();
             if (!selected.equals("-")) {
                 int val = Integer.parseInt(selected.replace("%", ""));
-                jSliderDiskon.setValue(val);
+                sldrDiskon.setValue(val);
             } else {
-                jSliderDiskon.setValue(0);
+                sldrDiskon.setValue(0);
             }
         });
         // Tampilkan label angka di bawah slider
@@ -99,9 +99,9 @@ public class HitungDiskonFrame extends javax.swing.JFrame {
         for (int i = 0; i <= 25; i += 5) {
             labelTable.put(i, new javax.swing.JLabel(String.valueOf(i)));
         }
-        jSliderDiskon.setLabelTable(labelTable);
-        jSliderDiskon.setPaintLabels(true);
-        jSliderDiskon.setValue(0);
+        sldrDiskon.setLabelTable(labelTable);
+        sldrDiskon.setPaintLabels(true);
+        sldrDiskon.setValue(0);
         
         
         
@@ -117,198 +117,188 @@ public class HitungDiskonFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jCheckBox1 = new javax.swing.JCheckBox();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextFieldHarga = new javax.swing.JTextField();
-        jComboBoxDiskon = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        panelHitungDiskon = new javax.swing.JPanel();
+        lblJudul = new javax.swing.JLabel();
+        lblHargaAsli = new javax.swing.JLabel();
+        lblDiskon = new javax.swing.JLabel();
+        lblKupon = new javax.swing.JLabel();
+        lblHargaAkhir = new javax.swing.JLabel();
+        txtHarga = new javax.swing.JTextField();
+        cmbDiskon = new javax.swing.JComboBox<>();
+        lblRiwayat = new javax.swing.JLabel();
+        scrlRiwayat = new javax.swing.JScrollPane();
         jTextAreaRiwayat = new javax.swing.JTextArea();
-        jButtonHitung = new javax.swing.JButton();
-        jButtonHapus = new javax.swing.JButton();
-        jButtonKeluar = new javax.swing.JButton();
-        jTextFieldKupon = new javax.swing.JTextField();
-        jTextFieldHasil = new javax.swing.JTextField();
-        jSliderDiskon = new javax.swing.JSlider();
-        jLabel7 = new javax.swing.JLabel();
-        jTextFieldPenghematan = new javax.swing.JTextField();
+        btnHitung = new javax.swing.JButton();
+        btnHapus = new javax.swing.JButton();
+        btnKeluar = new javax.swing.JButton();
+        txtKupon = new javax.swing.JTextField();
+        txtHasil = new javax.swing.JTextField();
+        sldrDiskon = new javax.swing.JSlider();
+        lblHemat = new javax.swing.JLabel();
+        txtPenghematan = new javax.swing.JTextField();
 
         jCheckBox1.setText("jCheckBox1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Aplikasi Perhitungan Diskon");
 
-        jPanel1.setBackground(new java.awt.Color(52, 73, 94));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panelHitungDiskon.setBackground(new java.awt.Color(52, 73, 94));
+        panelHitungDiskon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("APLIKASI PERHITUNGAN DISKON");
+        lblJudul.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblJudul.setForeground(new java.awt.Color(255, 255, 255));
+        lblJudul.setText("APLIKASI PERHITUNGAN DISKON");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("HARGA ASLI:");
+        lblHargaAsli.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblHargaAsli.setForeground(new java.awt.Color(255, 255, 255));
+        lblHargaAsli.setText("HARGA ASLI:");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("PILIH DISKON:");
+        lblDiskon.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblDiskon.setForeground(new java.awt.Color(255, 255, 255));
+        lblDiskon.setText("PILIH DISKON:");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("KODE KUPON:");
+        lblKupon.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblKupon.setForeground(new java.awt.Color(255, 255, 255));
+        lblKupon.setText("KODE KUPON:");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("HARGA AKHIR:");
+        lblHargaAkhir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblHargaAkhir.setForeground(new java.awt.Color(255, 255, 255));
+        lblHargaAkhir.setText("HARGA AKHIR:");
 
-        jComboBoxDiskon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "5%", "10%", "15%", "20%", "25%" }));
+        cmbDiskon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "5%", "10%", "15%", "20%", "25%" }));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("RIWAYAT PERHITUNGAN:");
+        lblRiwayat.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblRiwayat.setForeground(new java.awt.Color(255, 255, 255));
+        lblRiwayat.setText("RIWAYAT PERHITUNGAN:");
 
         jTextAreaRiwayat.setColumns(20);
         jTextAreaRiwayat.setRows(5);
-        jScrollPane1.setViewportView(jTextAreaRiwayat);
+        scrlRiwayat.setViewportView(jTextAreaRiwayat);
 
-        jButtonHitung.setBackground(new java.awt.Color(0, 204, 0));
-        jButtonHitung.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonHitung.setText("HITUNG");
-        jButtonHitung.addActionListener(new java.awt.event.ActionListener() {
+        btnHitung.setBackground(new java.awt.Color(0, 204, 0));
+        btnHitung.setForeground(new java.awt.Color(255, 255, 255));
+        btnHitung.setText("HITUNG");
+        btnHitung.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonHitungActionPerformed(evt);
+                btnHitungActionPerformed(evt);
             }
         });
 
-        jButtonHapus.setBackground(new java.awt.Color(255, 204, 0));
-        jButtonHapus.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonHapus.setText("HAPUS");
-        jButtonHapus.addActionListener(new java.awt.event.ActionListener() {
+        btnHapus.setBackground(new java.awt.Color(255, 204, 0));
+        btnHapus.setForeground(new java.awt.Color(255, 255, 255));
+        btnHapus.setText("HAPUS");
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonHapusActionPerformed(evt);
+                btnHapusActionPerformed(evt);
             }
         });
 
-        jButtonKeluar.setBackground(new java.awt.Color(204, 51, 0));
-        jButtonKeluar.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonKeluar.setText("KELUAR");
-        jButtonKeluar.addActionListener(new java.awt.event.ActionListener() {
+        btnKeluar.setBackground(new java.awt.Color(204, 51, 0));
+        btnKeluar.setForeground(new java.awt.Color(255, 255, 255));
+        btnKeluar.setText("KELUAR");
+        btnKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonKeluarActionPerformed(evt);
+                btnKeluarActionPerformed(evt);
             }
         });
 
-        jTextFieldHasil.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldHasilActionPerformed(evt);
-            }
-        });
+        sldrDiskon.setForeground(new java.awt.Color(255, 255, 255));
+        sldrDiskon.setMajorTickSpacing(5);
+        sldrDiskon.setMaximum(25);
+        sldrDiskon.setPaintLabels(true);
+        sldrDiskon.setPaintTicks(true);
 
-        jSliderDiskon.setForeground(new java.awt.Color(255, 255, 255));
-        jSliderDiskon.setMajorTickSpacing(5);
-        jSliderDiskon.setMaximum(25);
-        jSliderDiskon.setPaintLabels(true);
-        jSliderDiskon.setPaintTicks(true);
+        lblHemat.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblHemat.setForeground(new java.awt.Color(255, 255, 255));
+        lblHemat.setText("PENGHEMATAN:");
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("PENGHEMATAN:");
+        txtPenghematan.setEditable(false);
 
-        jTextFieldPenghematan.setEditable(false);
-        jTextFieldPenghematan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldPenghematanActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelHitungDiskonLayout = new javax.swing.GroupLayout(panelHitungDiskon);
+        panelHitungDiskon.setLayout(panelHitungDiskonLayout);
+        panelHitungDiskonLayout.setHorizontalGroup(
+            panelHitungDiskonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHitungDiskonLayout.createSequentialGroup()
+                .addGroup(panelHitungDiskonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelHitungDiskonLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(scrlRiwayat))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelHitungDiskonLayout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(panelHitungDiskonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelHitungDiskonLayout.createSequentialGroup()
+                                .addGroup(panelHitungDiskonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblDiskon)
+                                    .addComponent(lblHargaAsli)
+                                    .addComponent(lblKupon)
+                                    .addComponent(lblHargaAkhir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblHemat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldHasil, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jTextFieldKupon, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jTextFieldHarga, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jComboBoxDiskon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(panelHitungDiskonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtHasil, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtKupon, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtHarga, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(panelHitungDiskonLayout.createSequentialGroup()
+                                        .addComponent(cmbDiskon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jSliderDiskon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(sldrDiskon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 9, Short.MAX_VALUE))
-                                    .addComponent(jTextFieldPenghematan)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
+                                    .addComponent(txtPenghematan)))
+                            .addGroup(panelHitungDiskonLayout.createSequentialGroup()
+                                .addComponent(lblRiwayat)
                                 .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelHitungDiskonLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButtonHitung, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnHitung, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButtonHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButtonKeluar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btnKeluar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(panelHitungDiskonLayout.createSequentialGroup()
                 .addGap(86, 86, 86)
-                .addComponent(jLabel1)
+                .addComponent(lblJudul)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panelHitungDiskonLayout.setVerticalGroup(
+            panelHitungDiskonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelHitungDiskonLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(jLabel1)
+                .addComponent(lblJudul)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextFieldHarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelHitungDiskonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblHargaAsli)
+                    .addComponent(txtHarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jComboBoxDiskon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelHitungDiskonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelHitungDiskonLayout.createSequentialGroup()
+                        .addGroup(panelHitungDiskonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblDiskon)
+                            .addComponent(cmbDiskon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(38, 38, 38))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jSliderDiskon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHitungDiskonLayout.createSequentialGroup()
+                        .addComponent(sldrDiskon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextFieldKupon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelHitungDiskonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblKupon)
+                    .addComponent(txtKupon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextFieldHasil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelHitungDiskonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblHargaAkhir)
+                    .addComponent(txtHasil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldPenghematan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                .addGroup(panelHitungDiskonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPenghematan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblHemat))
                 .addGap(20, 20, 20)
-                .addComponent(jLabel6)
+                .addComponent(lblRiwayat)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrlRiwayat, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonHitung)
-                    .addComponent(jButtonHapus)
-                    .addComponent(jButtonKeluar))
+                .addGroup(panelHitungDiskonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnHitung)
+                    .addComponent(btnHapus)
+                    .addComponent(btnKeluar))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -318,30 +308,25 @@ public class HitungDiskonFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelHitungDiskon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelHitungDiskon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldHasilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldHasilActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldHasilActionPerformed
-
-    private void jButtonHitungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHitungActionPerformed
-        // TODO add your handling code here:
-        try {
+    private void btnHitungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHitungActionPerformed
+                try {
         // Validasi input harga
-        String hargaInput = jTextFieldHarga.getText().trim();
-        if (hargaInput.isEmpty() || jTextFieldHarga.getForeground().equals(Color.GRAY)) {
+        String hargaInput = txtHarga.getText().trim();
+        if (hargaInput.isEmpty() || txtHarga.getForeground().equals(Color.GRAY)) {
             JOptionPane.showMessageDialog(this, "Masukkan harga asli terlebih dahulu!",
                     "Peringatan", JOptionPane.WARNING_MESSAGE);
             return;
@@ -352,7 +337,7 @@ public class HitungDiskonFrame extends javax.swing.JFrame {
         double hargaAsli = Double.parseDouble(hargaInput);
 
         // Ambil diskon dari combo box dan ubah jadi angka
-        String diskonStr = (String) jComboBoxDiskon.getSelectedItem();
+        String diskonStr = (String) cmbDiskon.getSelectedItem();
         int diskon = 0;
         if (!diskonStr.equals("-")) {
             diskonStr = diskonStr.replace("%", "");
@@ -360,11 +345,11 @@ public class HitungDiskonFrame extends javax.swing.JFrame {
         }
 
         // Ambil kode kupon
-        String kupon = jTextFieldKupon.getText().trim();
+        String kupon = txtKupon.getText().trim();
         double tambahan = 0;
         if (kupon.equalsIgnoreCase("HEMAT10")) {
             tambahan = 10;
-        } else if (!kupon.isEmpty() && !jTextFieldKupon.getForeground().equals(Color.GRAY)) {
+        } else if (!kupon.isEmpty() && !txtKupon.getForeground().equals(Color.GRAY)) {
             JOptionPane.showMessageDialog(this, "Kode kupon tidak valid! (Gunakan: HEMAT10)",
                     "Peringatan", JOptionPane.WARNING_MESSAGE);
         }
@@ -384,12 +369,12 @@ public class HitungDiskonFrame extends javax.swing.JFrame {
         String waktu = now.format(fmt);
 
         // Tampilkan hasil
-        jTextFieldHasil.setForeground(Color.BLACK);
-        jTextFieldHasil.setText(hasilRupiah);
+        txtHasil.setForeground(Color.BLACK);
+        txtHasil.setText(hasilRupiah);
         
         // Tampilkan penghematan
-        jTextFieldPenghematan.setForeground(Color.BLACK);
-        jTextFieldPenghematan.setText("Anda hemat " + rupiahFormat.format(penghematan));
+        txtPenghematan.setForeground(Color.BLACK);
+        txtPenghematan.setText("Anda hemat " + rupiahFormat.format(penghematan));
 
         // Tambahkan ke riwayat
         jTextAreaRiwayat.append(
@@ -408,32 +393,31 @@ public class HitungDiskonFrame extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Masukkan angka yang valid untuk harga!",
                 "Error", JOptionPane.ERROR_MESSAGE);
     }
-    }//GEN-LAST:event_jButtonHitungActionPerformed
+    }//GEN-LAST:event_btnHitungActionPerformed
 
-    private void jButtonHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHapusActionPerformed
-        // TODO add your handling code here:
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
         int konfirmasi = JOptionPane.showConfirmDialog(this, "Hapus semua data dan riwayat?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
         if (konfirmasi == JOptionPane.YES_OPTION) {
-            jTextFieldHarga.setText("Masukkan harga asli");
-            jTextFieldHarga.setForeground(Color.GRAY);
-            jTextFieldKupon.setText("Masukkan kode kupon (opsional)");
-            jTextFieldKupon.setForeground(Color.GRAY);
-            jTextFieldHasil.setText("Harga akhir akan muncul di sini");
-            jTextFieldHasil.setForeground(Color.GRAY);
+            txtHarga.setText("Masukkan harga asli");
+            txtHarga.setForeground(Color.GRAY);
+            txtKupon.setText("Masukkan kode kupon (opsional)");
+            txtKupon.setForeground(Color.GRAY);
+            txtHasil.setText("Harga akhir akan muncul di sini");
+            txtHasil.setForeground(Color.GRAY);
             jTextAreaRiwayat.setText("");
-            jComboBoxDiskon.setSelectedIndex(0);
-            jSliderDiskon.setValue(0);
-            jTextFieldPenghematan.setText("Penghematan akan muncul di sini");
-            jTextFieldPenghematan.setForeground(Color.GRAY);
+            cmbDiskon.setSelectedIndex(0);
+            sldrDiskon.setValue(0);
+            txtPenghematan.setText("Penghematan akan muncul di sini");
+            txtPenghematan.setForeground(Color.GRAY);
             
         }
 
         
 
-    }//GEN-LAST:event_jButtonHapusActionPerformed
+    }//GEN-LAST:event_btnHapusActionPerformed
 
-    private void jButtonKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonKeluarActionPerformed
-        // TODO add your handling code here:
+    private void btnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarActionPerformed
+        
         int konfirmasi = JOptionPane.showConfirmDialog(this,
                 "Apakah Anda yakin ingin keluar dari aplikasi?",
                 "Konfirmasi Keluar", JOptionPane.YES_NO_OPTION);
@@ -441,11 +425,7 @@ public class HitungDiskonFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Terima kasih telah menggunakan aplikasi ini!");
             System.exit(0);
         }
-    }//GEN-LAST:event_jButtonKeluarActionPerformed
-
-    private void jTextFieldPenghematanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPenghematanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldPenghematanActionPerformed
+    }//GEN-LAST:event_btnKeluarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -483,25 +463,25 @@ public class HitungDiskonFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonHapus;
-    private javax.swing.JButton jButtonHitung;
-    private javax.swing.JButton jButtonKeluar;
+    private javax.swing.JButton btnHapus;
+    private javax.swing.JButton btnHitung;
+    private javax.swing.JButton btnKeluar;
+    private javax.swing.JComboBox<String> cmbDiskon;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JComboBox<String> jComboBoxDiskon;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSlider jSliderDiskon;
     private javax.swing.JTextArea jTextAreaRiwayat;
-    private javax.swing.JTextField jTextFieldHarga;
-    private javax.swing.JTextField jTextFieldHasil;
-    private javax.swing.JTextField jTextFieldKupon;
-    private javax.swing.JTextField jTextFieldPenghematan;
+    private javax.swing.JLabel lblDiskon;
+    private javax.swing.JLabel lblHargaAkhir;
+    private javax.swing.JLabel lblHargaAsli;
+    private javax.swing.JLabel lblHemat;
+    private javax.swing.JLabel lblJudul;
+    private javax.swing.JLabel lblKupon;
+    private javax.swing.JLabel lblRiwayat;
+    private javax.swing.JPanel panelHitungDiskon;
+    private javax.swing.JScrollPane scrlRiwayat;
+    private javax.swing.JSlider sldrDiskon;
+    private javax.swing.JTextField txtHarga;
+    private javax.swing.JTextField txtHasil;
+    private javax.swing.JTextField txtKupon;
+    private javax.swing.JTextField txtPenghematan;
     // End of variables declaration//GEN-END:variables
 }
